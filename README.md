@@ -44,3 +44,7 @@ Si después de aplicar el parche y aprobarlo, en las primeras 24 horas de uso el
 
 El "Human-in-the-loop" (HITL) para Evasión:
 Cuando la IA proponga cambiar la ofuscación (encoder.py), la prueba no debe ser solo unitaria, debe ser de campo. El sistema debe lanzar el payload contra un Windows Defender actualizado (o SentryGuard en modo prueba) y verificar que no lo detecta. Si el EDR lo pilla, la IA recibe el error y propone otra variante, iterando hasta que pase. Solo entonces pide aprobación humana.
+
+Auto-Updater A (Backend): Para RevForge, ExploitStrike, CyberLens y el Panel C2. Frecuencia: Diaria. Mecanismo: IA + CI + Aprobación Humana. Riesgo: Bajo (solo tu infraestructura).
+
+Auto-Updater B (Frontend/Operaciones): Para la generación de payloads y la rotación de perfiles de C2. Frecuencia: Bajo demanda (o semanal). Mecanismo: La IA genera variantes, pero un humano de operaciones (el operador del Red Team) debe validar manualmente el primer despliegue de esa variante en un entorno de pruebas. Si pasa 48 horas sin ser detectado, se marca como "ELITE" y se auto-despliega para el resto de la botnet.
